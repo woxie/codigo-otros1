@@ -1,24 +1,23 @@
 const baseEndpoint = 'https://api.github.com';
 const usersEndpoint = `${baseEndpoint}/users`;
-const $n = document.querySelector('.name');
-const $b = document.querySelector('.blog');
-const $l = document.querySelector('.location');
+const $n = document.querySelector('.name'); /* Estaba mal la referencia "." para clases */
+const $b = document.querySelector('.blog'); /* Estaba mal la referencia "." para clases */
+const $l = document.querySelector('.location'); /* Estaba mal la referencia "." para clases */
 
-async function displayUser(username,n,b,l) {
+async function displayUser(username,n,b,l) { /* Faltaban los parámetros n, b, l y async */
   $n.textContent = 'cargando...';
-  const response = await fetch(`${usersEndpoint}/${username}`);
-  const data = await response.json()
+  const response = await fetch(`${usersEndpoint}/${username}`); /* Faltaba await en vez de async */
+  const data = await response.json() /* Faltaba convertir la respuesta a un objeto */
   console.log(data);
-  $n.textContent = `${data.name}`;
-  $b.textContent = `${data.blog}`;
-  $l.textContent = `${data.location}`;
+  $n.textContent = `${data.name}`; /* No tenía backticks */
+  $b.textContent = `${data.blog}`; /* No tenía backticks */
+  $l.textContent = `${data.location}`; /* No tenía backticks */
 }
 
-function handleError(n,err) {
+function handleError(n,err) { /* Faltaban el parámetro n */
   console.log('OH NO!');
   console.log(err);
   n.textContent = `Algo salió mal: ${err}`
 }
 
-displayUser('stolinski')
-// .catch(handleError);
+displayUser('stolinski').catch(handleError);
