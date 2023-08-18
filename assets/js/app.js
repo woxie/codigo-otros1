@@ -4,7 +4,7 @@ const n = document.querySelector('.name'); /* Estaba mal la referencia, el "." e
 const b = document.querySelector('.blog'); /* Estaba mal la referencia, el "." es para clases */
 const l = document.querySelector('.location'); /* Estaba mal la referencia "." para clases */
 
-async function displayUser(usersEndpoint,username) { /* Faltaban los parámetros n, b, l y async */
+async function displayUser(username) { /* Faltaban los parámetros n, b, l y async */
   n.textContent = 'cargando...';
   const response = await fetch(`${usersEndpoint}/${username}`); /* Faltaba await en vez de async */
   const data = await response.json() /* Faltaba convertir la respuesta a un objeto */
@@ -14,10 +14,10 @@ async function displayUser(usersEndpoint,username) { /* Faltaban los parámetros
   l.textContent = `${data.location}`; /* No tenía backticks */
 }
 
-function handleError(n, err) { /* Faltaba el parámetro n */
+function handleError(err) {
   console.log('OH NO!');
   console.log(err);
   n.textContent = `Algo salió mal: ${err}`
 }
 
-displayUser('stolinski')
+displayUser('stolinski').catch(handleError)
