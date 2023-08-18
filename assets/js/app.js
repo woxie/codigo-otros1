@@ -1,7 +1,7 @@
 const baseEndpoint = 'https://api.github.com';
 const usersEndpoint = `${baseEndpoint}/users`;
-const $n = document.querySelector('.name'); /* Estaba mal la referencia "." para clases */
-const $b = document.querySelector('.blog'); /* Estaba mal la referencia "." para clases */
+const $n = document.querySelector('.name'); /* Estaba mal la referencia, el "." es para clases */
+const $b = document.querySelector('.blog'); /* Estaba mal la referencia, el "." es para clases */
 const $l = document.querySelector('.location'); /* Estaba mal la referencia "." para clases */
 
 async function displayUser(username,n,b,l) { /* Faltaban los parámetros n, b, l y async */
